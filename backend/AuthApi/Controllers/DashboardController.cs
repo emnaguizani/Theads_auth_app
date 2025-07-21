@@ -1,43 +1,24 @@
-[ApiController]
-[Route("api/[controller]")]
-public class DashboardController : ControllerBase
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+
+namespace AuthApi.Controllers
 {
-    [HttpGet]
-    [Authorize] // Requires authentication
-    public IActionResult GetDashboard()
+    [ApiController]
+    [Route("api/[controller]")]
+    public class DashboardController : ControllerBase
     {
-        try 
+        [HttpGet]
+        [Authorize]
+        public IActionResult GetDashboardData()
         {
-            // Simple test data
-            var data = new
-            {
-                stats = new[]
-                {
-                    new { icon = "📊", title = "Test Stat", value = "123" }
-                },
-                recentActivity = new[]
-                {
-                    new { action = "Dashboard loaded", timestamp = DateTime.Now.ToString() }
-                },
-                notifications = new[]
-                {
-                    new { message = "Dashboard working!", time = "now" }
-                }
-            };
-
-            return Ok(data);
+            return Ok(new { message = "This is protected data" });
         }
-        catch (Exception ex)
+
+        [HttpGet("public")]
+        [AllowAnonymous]
+        public IActionResult GetPublicData()
         {
-            return BadRequest(new { error = ex.Message });
+            return Ok(new { message = "This is public data" });
         }
-    }
-
-    // Alternative endpoint for testing without auth
-    [HttpGet("test")]
-    [AllowAnonymous]
-    public IActionResult Test()
-    {
-        return Ok(new { message = "Dashboard controller is working!" });
     }
 }

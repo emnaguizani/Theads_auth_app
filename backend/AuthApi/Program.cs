@@ -97,9 +97,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseCors("AllowAll");
+
 app.MapControllers();
 
 var summaries = new[]
