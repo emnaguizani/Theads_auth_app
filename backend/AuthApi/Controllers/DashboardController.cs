@@ -8,7 +8,7 @@ namespace AuthApi.Controllers
     public class DashboardController : ControllerBase
     {
         [HttpGet]
-        [Authorize]
+        
         public IActionResult GetDashboardData()
         {
             return Ok(new { message = "This is protected data" });
