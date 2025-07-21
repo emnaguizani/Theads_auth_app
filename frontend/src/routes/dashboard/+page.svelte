@@ -299,27 +299,7 @@
   <!-- Main Content -->
   <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
     <!-- Debug Tools (remove this after fixing) -->
-    <div class="mb-6 p-4 bg-yellow-100 border border-yellow-300 rounded">
-      <h3 class="text-sm font-bold text-yellow-800 mb-2">🔧 Debug Tools</h3>
       <div class="space-x-2">
-        <button 
-          on:click={testBasicConnection}
-          class="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600">
-          Test Basic Connection
-        </button>
-        
-        <button 
-          on:click={testWithAuth}
-          class="px-3 py-1 bg-green-500 text-white rounded text-sm hover:bg-green-600">
-          Test With Auth
-        </button>
-        
-        <button 
-          on:click={() => debugJWT(getToken())}
-          class="px-3 py-1 bg-purple-500 text-white rounded text-sm hover:bg-purple-600">
-          Debug JWT
-        </button>
-      </div>
     </div>
 
     {#if loading}
