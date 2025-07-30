@@ -68,7 +68,7 @@
         if (response.ok) {
           // Login successful
           success = true;
-          
+            
           // Store the JWT token (you can use localStorage, sessionStorage, or a store)
           localStorage.setItem('authToken', data.token);
           localStorage.setItem('userEmail', data.email);
@@ -78,12 +78,9 @@
           window.location.href = '/dashboard'; // Or use your routing solution
           
         } else {
-          // Login failed
-          const raw = await response.text(); // helps diagnose HTML or 404 responses
-          console.error("Login failed:", raw);
-          error = `Login failed with status ${response.status}`;
-          return;
-          error = data.message || 'Login failed. Please try again.';
+          
+          
+          error = data.message || `Login failed with status ${response.status}`;
         }
       } catch (err) {
         console.error('Login error:', err);
@@ -178,9 +175,7 @@
           <!-- Additional Links -->
           <div class="text-center space-y-2">
             <p class="text-sm text-gray-600">
-              <a href="/forgot-password" class="font-medium text-primary hover:underline">
-                Forgot your password?
-              </a>
+              
             </p>
             <p class="text-sm text-gray-600">
               Don't have an account?
